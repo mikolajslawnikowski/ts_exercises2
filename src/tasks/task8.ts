@@ -6,29 +6,29 @@ import { WycieczkaSzefaNaKosztFirmy, Wydatek, WydatekSzefa } from "./task5.js";
  */
 
 export const wydatek1: Wydatek = {
-    kwota: 100,
-    opis: "Wydatek 1"
-}
+  kwota: 100,
+  opis: "Wydatek 1",
+};
 
 export const wydatek2: WydatekSzefa = {
-    kwota: 200,
-    opis: "Wydatek 2",
-    isSzef: true
-}
+  kwota: 200,
+  opis: "Wydatek 2",
+  isSzef: true,
+};
 
 export const wydatek3: WycieczkaSzefaNaKosztFirmy = {
-    kwota: 300,
-    opis: "Wydatek",
-    isSzef: true,
-    cel: "Cypr"
-}
+  kwota: 300,
+  opis: "Wydatek",
+  isSzef: true,
+  cel: "Cypr",
+};
 
 export const poprawWydatki: PoprawWydatki = (wydatek: any) => {
-    return {
-        ...wydatek,
-        kwota: wydatek.kwota * 1.23
-    }
-}
+  return {
+    ...wydatek,
+    kwota: wydatek.kwota * 1.23,
+  };
+};
 
 //# ---
 

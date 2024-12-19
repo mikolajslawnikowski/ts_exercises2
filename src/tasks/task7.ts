@@ -8,9 +8,11 @@
  */
 
 export const wyniki: unknown = {
-    1: ""
-}
+  1: "",
+};
 
 //# ---
 
-export const wynikiAleZTypem = wyniki;
+export const wynikiAleZTypem: { [key: number]: string } = wyniki as {
+  [key: number]: string;
+};

@@ -1,3 +1,5 @@
+import { Kontrola } from "./task1.js";
+
 /**
  * Zadanie 4.
  *
@@ -8,27 +10,29 @@
  */
 
 export type KreatywnyWydatek = {
-    wydatek: number;
-    opis: string;
-}
-export type KontrolujKreatywnie = any;
-export type ZaksięgujKreatywnie = any;
+  wydatek: number;
+  opis: string;
+};
 
-export const kreatywneWydatki: ZaksięgujKreatywnie = (...wydatki: any) => {
-    const listaWydatków: any = [];
-    for (const wydatek in wydatki) {
-        listaWydatków.push({
-            wydatek: wydatek,
-            opis: "Wydatek kreatywny"
-        });
-    }
-    return listaWydatków;
-}
+export type KontrolujKreatywnie = (kontrola: Kontrola) => Kontrola;
 
-export const kreatywnaKontrola: KontrolujKreatywnie = (kontrola: any) => {
-    const wydatki = kreatywneWydatki(100, 200, 300);
-    return {
-        ...kontrola,
-        opis: "Kreatywny opis"
-    }
-}
+export type ZaksięgujKreatywnie = (...wydatki: number[]) => KreatywnyWydatek[];
+
+export const kreatywneWydatki: ZaksięgujKreatywnie = (...wydatki: number[]) => {
+  const listaWydatków: KreatywnyWydatek[] = [];
+  for (const wydatek of wydatki) {
+    listaWydatków.push({
+      wydatek: wydatek,
+      opis: "Wydatek kreatywny",
+    });
+  }
+  return listaWydatków;
+};
+
+export const kreatywnaKontrola: KontrolujKreatywnie = (kontrola: Kontrola) => {
+  const wydatki = kreatywneWydatki(100, 200, 300);
+  return {
+    ...kontrola,
+    opis: "Kreatywny opis",
+  };
+};

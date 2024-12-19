@@ -10,25 +10,33 @@ import { WycieczkaSzefaNaKosztFirmy, Wydatek, WydatekSzefa } from "./task5.js";
 type Wydatki = Wydatek | WydatekSzefa | WycieczkaSzefaNaKosztFirmy;
 
 export const skontrolujWydatki = (wydatek: Wydatki) => {
-    const skontrolowanyWydatek = {
-        wydatek,
-        isKontrola: false
-    }
-    if (isWydatekSzefa(wydatek)) {
-        return skontrolowanyWydatek;
-    } else if (isWycieczkaSzefaNaKosztFirmy(wydatek)) {
-        return skontrolowanyWydatek;
-    } else if (isWydatek(wydatek)) {
-        return skontrolowanyWydatek;
-    } else {
-        return skontrolowanyWydatek;
-    }
-}
+  const skontrolowanyWydatek = {
+    wydatek,
+    isKontrola: false,
+  };
+  if (isWydatekSzefa(wydatek)) {
+    return skontrolowanyWydatek;
+  } else if (isWycieczkaSzefaNaKosztFirmy(wydatek)) {
+    return skontrolowanyWydatek;
+  } else if (isWydatek(wydatek)) {
+    return skontrolowanyWydatek;
+  } else {
+    return skontrolowanyWydatek;
+  }
+};
 
 //# ---
 
-export const isWydatek = (wydatek: any) => { return false; }
+export const isWydatek = (wydatek: Wydatki): wydatek is Wydatek => {
+  return (wydatek as Wydatek).kwota !== undefined;
+};
 
-export const isWydatekSzefa = (wydatek: any) => { return false; }
+export const isWydatekSzefa = (wydatek: Wydatki): wydatek is WydatekSzefa => {
+  return (wydatek as WydatekSzefa).isSzef === true;
+};
 
-export const isWycieczkaSzefaNaKosztFirmy = (wydatek: any) => { return false; }
+export const isWycieczkaSzefaNaKosztFirmy = (
+  wydatek: Wydatki
+): wydatek is WycieczkaSzefaNaKosztFirmy => {
+  return (wydatek as WycieczkaSzefaNaKosztFirmy).cel !== undefined;
+};

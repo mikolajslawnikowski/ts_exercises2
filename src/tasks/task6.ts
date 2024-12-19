@@ -5,23 +5,23 @@
  */
 
 type AJHSF = {
-    zdane: boolean,
-    isPies: boolean,
-    firmaDoZamkniecia: boolean,
-    czySzefMaZnajomychWZarządzie: boolean,
-}
+  zdane: boolean;
+  isPies: boolean;
+  firmaDoZamkniecia: boolean;
+  czySzefMaZnajomychWZarządzie: boolean;
+};
 
 export const WynikKontroli = () => {
-    return new Promise((resolve: (v:AJHSF)=>void, reject) => {
-        const wynik = {
-            zdane: true,
-            isPies: true,
-            firmaDoZamkniecia: false,
-            czySzefMaZnajomychWZarządzie: true,
-        }
-        resolve(wynik);
-    });
-}
+  return new Promise((resolve: (v: AJHSF) => void, reject) => {
+    const wynik = {
+      zdane: true,
+      isPies: true,
+      firmaDoZamkniecia: false,
+      czySzefMaZnajomychWZarządzie: true,
+    };
+    resolve(wynik);
+  });
+};
 
 //# ---
 
